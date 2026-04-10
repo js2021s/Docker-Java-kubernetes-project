@@ -1,4 +1,5 @@
-FROM openjdk:8-jre
+#FROM openjdk:8-jre
+FROM eclipse-temurin:8-jre-alpine
 ADD target/productcatalogue-0.0.1-SNAPSHOT.jar app.jar
 ADD product-catalogue.yml app-config.yml
 EXPOSE 8020
