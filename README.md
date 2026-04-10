@@ -1,5 +1,7 @@
 # Java Microservices: Kubernetes & CI/CD Orchestration
 ![Java CI/CD with Docker](https://github.com/js2021s/Docker-Java-kubernetes-project/actions/workflows/ci-cd.yml/badge.svg)
+
+
 Dieses Projekt demonstriert die Modernisierung einer Java-basierten Microservices-Anwendung. Der Fokus liegt auf der Containerisierung, der Orchestrierung mit Kubernetes und der Automatisierung über eine CI/CD-Pipeline.
 
 # Features & Highlights
