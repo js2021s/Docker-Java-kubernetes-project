@@ -8,7 +8,7 @@ Dieses Projekt demonstriert die Modernisierung einer Java-basierten Microservice
 
 - Kubernetes Orchestration: Skalierbare Deployments und stabiles Networking über ClusterIP/NodePort Services.
 
--CI/CD Automation: Automatisierter Build- und Push-Prozess zu Docker Hub mittels GitHub Actions.
+- CI/CD Automation: Automatisierter Build- und Push-Prozess zu Docker Hub mittels GitHub Actions.
 
 # Technologie-Stack
 - Backend: Java 17, Maven
