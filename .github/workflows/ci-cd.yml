@@ -2,7 +2,7 @@ name: Java CI/CD with Docker
 
 on:
   push:
-    branches: [ "main" ] # Führt den Workflow bei jedem Push in den Main-Branch aus
+    branches: [ "main" ]
 
 jobs:
   build-and-push:
@@ -19,9 +19,12 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Build with Maven
-      # Baut die JAR-Dateien für alle Services
-      run: mvn clean package -DskipTests
+    # Maven Builds für jeden Unterordner
+    - name: Build All Services with Maven
+      run: |
+        mvn clean package -DskipTests -f shopfront/pom.xml
+        mvn clean package -DskipTests -f productcatalogue/pom.xml
+        mvn clean package -DskipTests -f stockmanager/pom.xml
 
     - name: Login to Docker Hub
       uses: docker/login-action@v2
@@ -29,9 +32,26 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+    # Docker Build & Push für Shopfront
     - name: Build and push Shopfront Image
       uses: docker/build-push-action@v4
       with:
         context: ./shopfront
         push: true
         tags: js2021s/shopfront:latest
+
+    # Docker Build & Push für Product Catalogue
+    - name: Build and push Product Catalogue Image
+      uses: docker/build-push-action@v4
+      with:
+        context: ./productcatalogue
+        push: true
+        tags: js2021s/productcatalogue:latest
+
+    # Docker Build & Push für Stock Manager
+    - name: Build and push Stock Manager Image
+      uses: docker/build-push-action@v4
+      with:
+        context: ./stockmanager
+        push: true
+        tags: js2021s/stockmanager:latest
